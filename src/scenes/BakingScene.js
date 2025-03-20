@@ -381,6 +381,14 @@ export class BakingScene extends Phaser.Scene {
     );
     this.add.existing(this.speechBubble);
     this.input.setDraggable(whisk);
+
+    // Drag events for sugar
+    this.input.on("drag", (pointer, gameObject, dragX, dragY) => {
+      if (gameObject === this.items.sugar) {
+        gameObject.x = dragX;
+        gameObject.y = dragY;
+      }
+    });
   }
   // setInstructions() {
   //   const { width, height } = this.scale;
